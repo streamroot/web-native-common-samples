@@ -11,6 +11,7 @@ For every platforms, it instantiate the `Benchmark` class, runs the hasher multi
 
 ## Results
 
+### Google Chrome 90
 On 1000 iterations, with a buffer of size 1MiB and compiled in Release mode, here are the results we obtained :
 
 | Platform   | Mean duration | Variance |
@@ -19,4 +20,26 @@ On 1000 iterations, with a buffer of size 1MiB and compiled in Release mode, her
 | Web (JS)   |       1.737ms |  0.076ms |
 | Native     |       0.318ms |  0.007ms |
 
-This is a simple benchmark, but we can see that WASM is a bit better than JS and the native code is 3x times faster than the WASM version.
+As we can see, on Chrome, WASM is a bit better than JS and the native code is 3x times faster than the WASM version.
+
+### Firefox 88.0
+On 1000 iterations, with a buffer of size 1MiB and compiled in Release mode, here are the results we obtained :
+
+| Platform   | Mean duration | Variance |
+|------------|---------------|----------|
+| Web (WASM) |       4.137ms |  0.392ms |
+| Web (JS)   |       1.977ms |  0.258ms |
+| Native     |       0.318ms |  0.007ms |
+
+As we can see, on Firefox, WASM is clearly slower that JS, but JS is slower than on Chrome.
+
+### Safari 13.1.3
+On 1000 iterations, with a buffer of size 1MiB and compiled in Release mode, here are the results we obtained :
+
+| Platform   | Mean duration | Variance |
+|------------|---------------|----------|
+| Web (WASM) |       0.369ms |  0.235ms |
+| Web (JS)   |       9.592ms |  0.660ms |
+| Native     |       0.318ms |  0.007ms |
+
+Surprisingly, on Safari, WASM is really fast, almost as fast as the native version. However, the JS version is more than 5 times slower than on Chrome.
